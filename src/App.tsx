@@ -15,6 +15,8 @@ function App() {
     return <h1>Loading..</h1>;
   }
 
+  console.log(data);
+
   return (
     <>
       <div>
@@ -25,9 +27,6 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      {data.map((todo) => (
-        <p>{todo.title}</p>
-      ))}
     </>
   );
 }

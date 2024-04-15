@@ -2,7 +2,7 @@ import Axios from "axios";
 import { buildStorage, setupCache } from "axios-cache-interceptor";
 import { clear, del, get, set } from "idb-keyval";
 
-const CACHE_TTL = 60 * 60 * 1000; // 1 hour in milliseconds
+const CACHE_TTL = 60 * 60 * 1000;
 
 const indexedDbStorage = buildStorage({
   async find(key) {
@@ -14,7 +14,6 @@ const indexedDbStorage = buildStorage({
 
     const { value, timestamp } = storedItem;
     if (!timestamp || Date.now() - timestamp > CACHE_TTL) {
-      // If data is not found or expired, return null
       return null;
     }
 
@@ -22,7 +21,6 @@ const indexedDbStorage = buildStorage({
   },
 
   async set(key, value) {
-    // Store value along with timestamp
     await set(key, { value, timestamp: Date.now() });
   },
 
@@ -33,7 +31,6 @@ const indexedDbStorage = buildStorage({
 
 export const axios = setupCache(Axios, { storage: indexedDbStorage });
 
-// Function to clear cache
 export async function clearCache() {
   await clear();
 }

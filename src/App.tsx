@@ -12,7 +12,6 @@ function App() {
         >
           Dashboard
         </button>
-        Home page
       </div>
     </>
   );

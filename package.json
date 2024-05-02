@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@marsidev/react-turnstile": "^0.6.0",
     "axios": "^1",
     "axios-cache-interceptor": "^1",
     "idb-keyval": "^6.2.1",

@@ -3,44 +3,44 @@ import {useState} from "react";
 export default function UserPage() {
 
 
-    const allItems = [
-        { id: 'apple', value: '🍎 apple' },
-        { id: 'orange', value: '🍊 orange' },
-        { id: 'grape', value: '🍇 grape' },
-        { id: 'pear', value: '🍐 pear' },
-    ]
-
-
-
-    const [items, setItems] = useState(allItems)
-
-    console.log(items);
-
-    function addItem() {
-        const itemIds = items.map(i => i.id)
-        const itemToAdd = allItems.find(i => !itemIds.includes(i.id))
-        if (itemToAdd) setItems([...items, itemToAdd])
+    const defaultValuesByTopic = {
+        training: 'I would like some training',
+        consulting: 'I have consulting needs',
+        question: 'I have some questions',
     }
 
-    function removeItem(id: string) {
-        setItems(items.filter(i => i.id !== id))
-    }
+    const [topic, setTopic] = useState('training')
+
+
 
     return (
         <main>
-            <button disabled={items.length >= allItems.length} onClick={addItem}>
-                add item
-            </button>
-            <ul>
-                {items.map((item: any) => (
-                    <li>
-                        <button onClick={() => removeItem(item.id)}>remove</button>
-                        {' '}
-                        <label htmlFor={`${item.id}-input`}>{item.value}</label>{' '}
-                        <input id={`${item.id}-input`} defaultValue={item.value} key={item.value} />
-                    </li>
-                ))}
-            </ul>
+            <form>
+                <div>
+                <label htmlFor="topic">Topic</label>
+                <select
+                    id="topic"
+                    value={topic}
+                    onChange={(e) => setTopic(e.target.value)}
+                >
+                    <option value="training">Training</option>
+                    <option value="consulting">Consulting</option>
+                    <option value="question">Question</option>
+                </select>
+                </div>
+                <div>
+                <label htmlFor="subject" className="block">Email Subject</label>
+                <input
+                    className="border "
+                    id="subject"
+                    defaultValue={defaultValuesByTopic[topic]}
+                />
+                </div>
+                <div>
+                <label htmlFor="body">Email body</label>
+                <textarea id="body"/>
+                </div>
+            </form>
         </main>
     )
 }

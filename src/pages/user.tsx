@@ -1,46 +1,31 @@
 import {useState} from "react";
 
+let data = 1
+let newData = 2
 export default function UserPage() {
 
 
-    const defaultValuesByTopic = {
-        training: 'I would like some training',
-        consulting: 'I have consulting needs',
-        question: 'I have some questions',
-    }
+    const [count, setCount] = useState(0);
 
-    const [topic, setTopic] = useState('training')
+    // Conditional hook call
+    if (count > 1) {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        const [name, setName] = useState(1);  // Hook inside condition
+    } else {
+
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        const [test, setTest] = useState(1);  // Hook inside condition
+
+    }
 
 
 
     return (
         <main>
-            <form>
-                <div>
-                <label htmlFor="topic">Topic</label>
-                <select
-                    id="topic"
-                    value={topic}
-                    onChange={(e) => setTopic(e.target.value)}
-                >
-                    <option value="training">Training</option>
-                    <option value="consulting">Consulting</option>
-                    <option value="question">Question</option>
-                </select>
-                </div>
-                <div>
-                <label htmlFor="subject" className="block">Email Subject</label>
-                <input
-                    className="border "
-                    id="subject"
-                    defaultValue={defaultValuesByTopic[topic]}
-                />
-                </div>
-                <div>
-                <label htmlFor="body">Email body</label>
-                <textarea id="body"/>
-                </div>
-            </form>
+            <div>
+                <p>Count: {count}</p>
+                <button onClick={() => setCount(count + 1)}>Increase Count {data} {newData}</button>
+            </div>
         </main>
     )
 }

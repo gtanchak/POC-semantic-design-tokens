@@ -72,6 +72,32 @@ const blogPosts = [
 ] as const
 
 
+
+function getColorFromSeed(
+    seed: string,
+    startIndex: number,
+    length: number,
+): string {
+    const endIndex = (startIndex + length) % seed.length
+    console.log(endIndex);
+    if (endIndex >= startIndex) {
+        return seed.slice(startIndex, endIndex)
+    } else {
+        return seed.slice(startIndex) + seed.slice(0, endIndex)
+    }
+}
+
+export function generateGradient(seedHex: string): string {
+    const color1 = getColorFromSeed(seedHex, 0, 6)
+    const color2 = getColorFromSeed(seedHex, 6, 6)
+    const degree = seedHex.charCodeAt(0) % 360
+    const gradient = `linear-gradient(${degree}deg, #${color1}, #${color2})`
+
+    return gradient
+}
+
+
+
 export const getMatchingBlogs = (query:string) =>  {
     const words = query.split(' ').map(w => w.trim());
     return blogPosts.filter(blog => {

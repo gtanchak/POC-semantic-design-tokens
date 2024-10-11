@@ -1,7 +1,6 @@
 import {useState} from "react";
+import useCount from "./useCount.ts";
 
-let data = 1
-let newData = 2
 export default function UserPage() {
 
 
@@ -10,12 +9,8 @@ export default function UserPage() {
     // Conditional hook call
     if (count > 1) {
         // eslint-disable-next-line react-hooks/rules-of-hooks
-        const [name, setName] = useState(1);  // Hook inside condition
-    } else {
-
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        const [test, setTest] = useState(1);  // Hook inside condition
-
+        const {count} = useCount();
+        console.log(count);
     }
 
 
@@ -24,7 +19,7 @@ export default function UserPage() {
         <main>
             <div>
                 <p>Count: {count}</p>
-                <button onClick={() => setCount(count + 1)}>Increase Count {data} {newData}</button>
+                <button onClick={() => setCount(count + 1)}>Increase Count</button>
             </div>
         </main>
     )

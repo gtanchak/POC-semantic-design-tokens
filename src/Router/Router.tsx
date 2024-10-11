@@ -2,7 +2,7 @@ import { useRoutes } from "react-router-dom";
 import App from "../App";
 import AppLayout from "../components/AppLayout";
 import DashboardPage from "../pages/dashboard";
-import BlogsPage from "../pages/user.tsx";
+import BlogsPage from "../pages/blogs.tsx";
 
 const Router = () => {
   const element = useRoutes([

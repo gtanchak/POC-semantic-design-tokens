@@ -7,8 +7,9 @@ export default function BlogsPage() {
     const blogs = getMatchingBlogs(query)
     console.log(blogs);
     return (
-        <main>
-            <input onChange={(e) => setQuery(e.target.value)} value={query} />
-        </main>
+        <section className="my-5 ">
+            <label className="block">Query</label>
+            <input className="border border-black" onChange={(e) => setQuery(e.target.value)} value={query} />
+        </section>
     )
 }

@@ -73,8 +73,15 @@ const blogPosts = [
 
 
 export const getMatchingBlogs = (query:string) =>  {
-    const words = query.split(' ');
-    console.log(words);
+    const words = query.split(' ').map(w => w.trim());
+    return blogPosts.filter(blog => {
+    if(!query) return true
+    return (
+        words.every(word => blog.tags.some(tag => tag === word)) ||
+        blog.title.toLowerCase().includes(query.toLowerCase()) ||
+        blog.description.toLowerCase().includes(query.toLowerCase())
+    )
+    })
 }
 
 

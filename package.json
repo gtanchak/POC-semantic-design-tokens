@@ -1,5 +1,5 @@
 {
-  "name": "axios-cache-poc",
+  "name": "poc-semantic-design-tokens",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,10 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@marsidev/react-turnstile": "^0.6.0",
-    "axios": "^1",
-    "axios-cache-interceptor": "^1",
-    "idb-keyval": "^6.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",

@@ -37,7 +37,6 @@ export default function BlogsPage() {
                             <input
                                 type="checkbox"
                                 checked={dogChecked}
-                                // 🐨 control the checked state of this checkbox by setting the checked prop
                                 onChange={e => handleCheck('dog', e.currentTarget.checked)}
                             />{' '}
                             🐶 dog
@@ -46,7 +45,6 @@ export default function BlogsPage() {
                             <input
                                 type="checkbox"
                                 checked={catChecked}
-                                // 🐨 control the checked state of this checkbox by setting the checked prop
                                 onChange={e => handleCheck('cat', e.currentTarget.checked)}
                             />{' '}
                             🐱 cat
@@ -55,7 +53,6 @@ export default function BlogsPage() {
                             <input
                                 type="checkbox"
                                 checked={caterpillarChecked}
-                                // 🐨 control the checked state of this checkbox by setting the checked prop
                                 onChange={e =>
                                     handleCheck('caterpillar', e.currentTarget.checked)
                                 }

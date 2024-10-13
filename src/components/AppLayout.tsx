@@ -1,8 +1,8 @@
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom';
 
 const AppLayout = () => {
   return (
-    <main className="container mx-auto">
+    <main className='container mx-auto'>
       <Outlet />
     </main>
   );

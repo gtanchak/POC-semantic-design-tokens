@@ -8,7 +8,7 @@ const HomePage = () => {
         <h1 className='text-3xl font-bold leading-9 mt-1 mb-4'>
           Opportunity of a lifetime
         </h1>
-        <p>
+        <p className='text-gray-400'>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates
           sint dicta quas explicabo rem quisquam consectetur aperiam facere
           temporibus aut. Voluptatibus minus nesciunt qui voluptas fugiat

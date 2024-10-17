@@ -1,30 +1,75 @@
-# React + TypeScript + Vite
+# Design Token System with Tailwind CSS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a proof of concept (POC) for implementing a **Design Token System** using **Tailwind CSS**. The aim is to create a scalable and maintainable system for managing design tokens such as colors, typography, spacing, etc., in a Tailwind-based project.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Design Tokens:** Centralized management of design tokens (e.g., colors, font sizes, spacing).
+- **Tailwind Integration:** Tailwind CSS used for rapid styling and utility-first classes.
+- **Custom Tailwind Configuration:** Tailwind configuration extended to incorporate design tokens.
+- **Scalability:** Easily extendable for larger projects with more design tokens.
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Clone the repository:
 
-- Configure the top-level `parserOptions` property like this:
+   ```bash
+   git clone https://github.com/gtanchak/POC-semantic-design-tokens
+   cd design-token-system-poc
+   npm install
+   npm run dev
+## Semantic Design Tokens
+```typescript
+import { type Config } from 'tailwindcss';
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
+const colors = {
+  teal: '#00FFE1',
+  purple: '#6200FF',
+  grey: {
+    0: '#FFFFFF',
+    5: '#EBEBEB',
+    10: '#DADADA',
+    20: '#C2C2C2',
+    30: '#AAAAAA',
+    40: '#919191',
+    50: '#797979',
+    60: '#616161',
+    70: '#494949',
+    80: '#313131',
+    90: '#181818',
+    100: '#000000',
   },
-}
-```
+};
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+export default {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    colors: {
+      inherit: 'inherit',
+      currentColor: 'currentColor',
+      transparent: 'transparent',
+    },
+    backgroundColor: {
+      highlight: colors.teal,
+      accesent: colors.purple,
+      neutral: {
+        DEFAULT: colors.grey[0],
+        inverted: colors.grey[100],
+      },
+      subtle: colors.grey[5],
+      bold: colors.grey[80],
+    },
+    textColor: {
+      copy: colors.grey[100],
+      subtle: colors.grey[60],
+      muted: colors.grey[40],
+      inverted: colors.grey[20],
+    },
+    borderColor: {
+      copy: colors.grey[60],
+      subtle: colors.grey[40],
+      muted: colors.grey[20],
+    },
+  },
+  plugins: [],
+} satisfies Config;
